@@ -11,15 +11,13 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 	<link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet">
-
 	<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700;900&display=swap" rel="stylesheet">
 
 	<link rel="stylesheet" type="text/css" href="style.css">
 
-	<!-- 🔥 FIREBASE (IMPORTANTE: solo estos 2) -->
+	<!-- Firebase -->
 	<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
-
 </head>
 
 <body>
@@ -39,6 +37,12 @@
 
 		<h3 id="user_name" class="color_white"></h3>
 
+		<!-- 🔎 BUSCADOR -->
+		<<input type="text" id="search_room" class="form-control"
+		placeholder="Buscar room..."
+		onkeyup="if(event.key==='Enter') searchRoom()">
+
+		<!-- CREAR ROOM -->
 		<div class="form-group input_div_room_page">
 
 			<label>Crear Room:</label>
@@ -54,6 +58,22 @@
 			Crear Room
 		</button>
 
+		<button onclick="window.location='youtube.html'" class="btn btn-info">
+			Videos
+		</button>
+
+		<br><br>
+
+		<!-- 🧠 CATEGORÍAS VISUALES -->
+		<h4 class="color_white">📂 Categorías</h4>
+
+		<span class="label label-success">General</span>
+		<span class="label label-primary">Hombres</span>
+		<span class="label label-danger">Mujeres</span>
+		<span class="label label-warning">Mixto</span>
+
+		<br><br>
+
 		<h3 class="color_white">Otras Rooms</h3>
 
 		<div id="output"></div>
@@ -62,7 +82,6 @@
 
 </div>
 
-<!-- JS -->
 <script src="kwitter_room.js"></script>
 
 </body>

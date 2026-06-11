@@ -19,16 +19,19 @@ document.getElementById("room_name").innerHTML = "#" + room_name;
 function send() {
 
     var msg = document.getElementById("msg").value;
+    var img = document.getElementById("img_url").value;
 
-    if (msg === "") return;
+    if (msg.trim() === "" && img.trim() === "") return;
 
     firebase.database().ref(room_name).push({
         name: user_name,
         message: msg,
+        image: img,
         like: 0
     });
 
     document.getElementById("msg").value = "";
+    document.getElementById("img_url").value = "";
 }
 
 // 📡 LEER MENSAJES
@@ -46,19 +49,29 @@ function getData() {
             if (key !== "purpose") {
 
                 var message_id = key;
-                var data_val = data;
 
-                var name = data_val.name;
-                var message = data_val.message;
-                var like = data_val.like;
+                var name = data.name || "Anon";
+                var message = data.message || "";
+                var image = data.image || "";
+                var like = data.like || 0;
+
+                var imageTag = "";
+
+                if (image !== "") {
+                    imageTag = "<br><img src='" + image + "' style='max-width:200px;border-radius:10px;'>";
+                }
 
                 var row =
-                "<div style='background:#fff; padding:10px; border-radius:10px; margin:10px 0;'>" +
-                    "<h4>" + name + "</h4>" +
+                "<div style='background:#fff;padding:10px;border-radius:10px;margin:10px 0;'>" +
+                    "<h4>👤 " + name + "</h4>" +
                     "<p>" + message + "</p>" +
-                    "<button class='btn btn-warning btn-sm' id='" + message_id + "' onclick='updateLike(this.id)' value='" + like + "'>" +
+                    imageTag +
+                    "<br><br>" +
+
+                    "<button class='btn btn-warning btn-sm' id='" + message_id + "' value='" + like + "' onclick='updateLike(this.id)'>" +
                         "👍 Like: " + like +
                     "</button>" +
+
                 "</div><hr>";
 
                 document.getElementById("output").innerHTML += row;
@@ -70,24 +83,38 @@ function getData() {
 
 getData();
 
-// 👍 LIKE
+// LIKE FUNCIONAL
 function updateLike(id) {
 
     var button = document.getElementById(id);
     var likes = button.value;
 
-    var updated_likes = Number(likes) + 1;
-
     firebase.database().ref(room_name).child(id).update({
-        like: updated_likes
+        like: Number(likes) + 1
     });
 }
 
-// 🚪 LOGOUT
+// LOGOUT
 function logout() {
 
     localStorage.removeItem("user_name");
     localStorage.removeItem("room_name");
 
     window.location = "login.html";
+}
+function searchRoom() {
+
+    var input = document.getElementById("search_room").value.toLowerCase().trim();
+    var rooms = document.getElementsByClassName("room_name");
+
+    for (var i = 0; i < rooms.length; i++) {
+
+        var txt = rooms[i].innerText.toLowerCase().replace("»", "").trim();
+
+        if (txt.includes(input)) {
+            rooms[i].style.display = "block";
+        } else {
+            rooms[i].style.display = "none";
+        }
+    }
 }

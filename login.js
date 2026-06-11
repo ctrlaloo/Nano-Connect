@@ -36,7 +36,7 @@ function login() {
                 "Inicio de sesión correcto";
 
                 setTimeout(function(){
-                    window.location = "kwitter_room.html";
+                    window.location = "feed.html";
                 },1000);
 
             }else{

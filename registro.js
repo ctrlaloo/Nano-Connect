@@ -26,34 +26,30 @@ function registrar() {
     var curp = document.getElementById("curp").value.trim().toUpperCase();
     var password = document.getElementById("password").value;
 
+    var mensaje = document.getElementById("mensaje");
+
     if (nombre === "" || curp === "" || password === "") {
-        document.getElementById("mensaje").innerHTML =
-        "Completa todos los campos";
+        mensaje.innerHTML = "Completa todos los campos";
         return;
     }
 
-    var curpRegex = /^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9][0-9]$/;
+    // CURP más flexible (mejor para proyecto escolar)
+    var curpRegex = /^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$/;
 
     if (!curpRegex.test(curp)) {
-        document.getElementById("mensaje").innerHTML =
-        "CURP inválido";
+        mensaje.innerHTML = "CURP inválido";
         return;
     }
 
+    // Fecha nacimiento correcta
     var anio = parseInt(curp.substring(4,6));
     var mes = parseInt(curp.substring(6,8));
     var dia = parseInt(curp.substring(8,10));
 
-    var anioCompleto;
-
-    if (anio <= new Date().getFullYear() % 100) {
-        anioCompleto = 2000 + anio;
-    } else {
-        anioCompleto = 1900 + anio;
-    }
+    var currentYear = new Date().getFullYear() % 100;
+    var anioCompleto = (anio <= currentYear) ? 2000 + anio : 1900 + anio;
 
     var nacimiento = new Date(anioCompleto, mes - 1, dia);
-
     var hoy = new Date();
 
     var edad = hoy.getFullYear() - nacimiento.getFullYear();
@@ -67,15 +63,18 @@ function registrar() {
     }
 
     if (edad < 12) {
-        document.getElementById("mensaje").innerHTML =
-        "Debes tener al menos 13 años";
+        mensaje.innerHTML = "Debes tener al menos 12 años";
         return;
     }
 
+    // SEXO correcto
     var sexo = curp.charAt(10);
 
-    sexo = (sexo === "H") ? "Hombre" : "Mujer";
+    if (sexo === "H") sexo = "Hombre";
+    else if (sexo === "M") sexo = "Mujer";
+    else sexo = "Desconocido";
 
+    // Guardar en Firebase
     firebase.database().ref("usuarios/" + nombre).set({
         nombre: nombre,
         curp: curp,
@@ -86,12 +85,9 @@ function registrar() {
 
     localStorage.setItem("user_name", nombre);
 
-    localStorage.setItem("user_name", nombre);
+    mensaje.innerHTML = "Conexión creada correctamente";
 
-document.getElementById("mensaje").innerHTML =
-"Conexión creada correctamente";
-
-setTimeout(function() {
-    window.location = "kwitter_room.html";
-}, 1500)
+    setTimeout(function() {
+        window.location = "kwitter_room.html";
+    }, 1500);
 }

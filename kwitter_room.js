@@ -38,7 +38,7 @@ function addRoom() {
     window.location = "kwitter_page.html";
 }
 
-// 📡 obtener rooms
+// obtener rooms
 function getData() {
 
     firebase.database().ref("/").on('value', function(snapshot) {
@@ -47,39 +47,17 @@ function getData() {
 
         snapshot.forEach(function(childSnapshot) {
 
-            var room_name = childSnapshot.key;
+            var sexo = localStorage.getItem("sexo");
+var allowed = getAllowedRooms(sexo);
 
-            console.log("Room Name - " + room_name);
+var room_name = childSnapshot.key;
 
-            var row =
-            "<div class='room_name' id='" + room_name + "' onclick='redirectToRoomName(this.id)'>» " +
-            room_name +
-            "</div><hr>";
+if (allowed.includes(room_name)) {
 
-            document.getElementById("output").innerHTML += row;
-        });
+    var row =
+    "<div class='room_name' id='" + room_name + "' onclick='redirectToRoomName(this.id)'>" +
+    "» " + room_name +
+    "</div><hr>";
 
-    });
-
-}
-
-getData();
-
-// 🔁 entrar a room
-function redirectToRoomName(name) {
-
-    console.log(name);
-
-    localStorage.setItem("room_name", name);
-
-    window.location = "kwitter_page.html";
-}
-
-// 🚪 logout
-function logout() {
-
-    localStorage.removeItem("user_name");
-    localStorage.removeItem("room_name");
-
-    window.location = "login.html";
+    document.getElementById("output").innerHTML += row;
 }

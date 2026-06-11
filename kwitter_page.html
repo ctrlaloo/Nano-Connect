@@ -11,7 +11,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 	<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-database.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
@@ -47,7 +47,15 @@
 
 		<input type="text" id="msg" class="form-control" placeholder="Mensaje">
 
-		<button onclick="send();" class="btn btn-success">Enviar</button>
+		<br>
+
+		<input type="text" id="img_url" class="form-control" placeholder="URL imagen (opcional)">
+
+		<br>
+
+		<button onclick="send();" class="btn btn-success">
+			Enviar
+		</button>
 
 	</div>
 
