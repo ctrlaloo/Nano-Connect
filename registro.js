@@ -75,13 +75,14 @@ function registrar() {
     else sexo = "Desconocido";
 
     // Guardar en Firebase
-    firebase.database().ref("usuarios/" + nombre).set({
-        nombre: nombre,
-        curp: curp,
-        sexo: sexo,
-        edad: edad,
-        password: password
-    });
+    firebase.database().ref("usuarios").push({
+    full_name: full_name,
+    username: username,
+    curp: curp,
+    sexo: sexo,
+    edad: edad,
+    password: password
+});
 
     localStorage.setItem("user_name", nombre);
 

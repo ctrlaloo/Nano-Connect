@@ -13,10 +13,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-    <!-- Firebase (IMPORTANTE) -->
-<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-database.js"></script>
-<script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <!-- Firebase SOLO UNO -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-database.js"></script>
 
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
@@ -38,33 +37,22 @@
 
         <br>
 
-        <!-- USUARIO -->
-        <input type="text"
-               id="user_name"
-               class="form-control"
-               placeholder="Nombre de usuario">
-
+        <!-- USERNAME -->
+         <input type="text" id="full_name" class="form-control" placeholder="Nombre completo">
+         <input type="text" id="user_name" class="form-control" placeholder="Nombre de usuario">
         <br>
 
         <!-- CURP -->
-        <input type="text"
-               id="curp"
-               class="form-control"
-               placeholder="CURP">
+        <input type="text" id="curp" class="form-control" placeholder="CURP">
 
         <br>
 
-        <!-- CONTRASEÑA CON OJITO -->
+        <!-- PASSWORD -->
         <div class="input-group">
 
-            <input type="password"
-                   id="password"
-                   class="form-control"
-                   placeholder="Contraseña">
+            <input type="password" id="password" class="form-control" placeholder="Contraseña">
 
-            <span class="input-group-addon"
-                  onclick="togglePassword()"
-                  style="cursor:pointer;">
+            <span class="input-group-addon" onclick="togglePassword()" style="cursor:pointer;">
                 <span class="glyphicon glyphicon-eye-open"></span>
             </span>
 
@@ -72,29 +60,22 @@
 
         <br>
 
-        <!-- BOTÓN -->
         <button onclick="registrar()" class="btn btn-primary nano-btn">
             Registrarme
         </button>
 
         <br><br>
 
-        <!-- MENSAJE -->
         <p id="mensaje"></p>
 
         <br>
 
-        <p>¿Ya tienes una conexión?</p>
-
-        <a href="login.html">
-            Iniciar sesión
-        </a>
+        <a href="login.html">Ya tengo cuenta</a>
 
     </div>
 
 </center>
 
-<!-- TU JS -->
 <script src="registro.js"></script>
 
 </body>
