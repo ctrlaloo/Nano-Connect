@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Kwitter Videos</title>
+
+<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+
+<link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="youtube.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<button
+class="btn btn-danger"
+onclick="window.location='kwitter_room.html'">
+← Regresar
+</button>
+
+<center>
+
+<h1 class="header">
+Kwitter Videos
+<sup><img src="m2.png"></sup>
+</h1>
+
+<h3 id="user_name" class="color_white"></h3>
+
+<input
+type="text"
+id="search"
+class="form-control"
+placeholder="Buscar videos">
+
+<br>
+
+<button
+class="btn btn-success"
+onclick="buscarVideos()">
+Buscar
+</button>
+
+<button
+class="btn btn-warning"
+onclick="verFavoritos()">
+Favoritos
+</button>
+
+<hr>
+
+<div id="videos"></div>
+
+</center>
+
+</div>
+
+<script src="youtube.js"></script>
+
+</body>
+</html>

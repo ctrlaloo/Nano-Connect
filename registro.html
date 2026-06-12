@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro - Nano Connect</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <!-- Firebase (IMPORTANTE) -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+<center>
+
+    <h1 class="header">
+        Nano Connect
+        <sup><img src="m2.png"></sup>
+    </h1>
+
+    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-11 login_div">
+
+        <img src="logo.png" class="logo">
+
+        <h1>Crear cuenta</h1>
+
+        <br>
+
+        <!-- USUARIO -->
+        <input type="text"
+               id="user_name"
+               class="form-control"
+               placeholder="Nombre de usuario">
+
+        <br>
+
+        <!-- CURP -->
+        <input type="text"
+               id="curp"
+               class="form-control"
+               placeholder="CURP">
+
+        <br>
+
+        <!-- CONTRASEÑA CON OJITO -->
+        <div class="input-group">
+
+            <input type="password"
+                   id="password"
+                   class="form-control"
+                   placeholder="Contraseña">
+
+            <span class="input-group-addon"
+                  onclick="togglePassword()"
+                  style="cursor:pointer;">
+                <span class="glyphicon glyphicon-eye-open"></span>
+            </span>
+
+        </div>
+
+        <br>
+
+        <!-- BOTÓN -->
+        <button onclick="registrar()" class="btn btn-primary nano-btn">
+            Registrarme
+        </button>
+
+        <br><br>
+
+        <!-- MENSAJE -->
+        <p id="mensaje"></p>
+
+        <br>
+
+        <p>¿Ya tienes una conexión?</p>
+
+        <a href="login.html">
+            Iniciar sesión
+        </a>
+
+    </div>
+
+</center>
+
+<!-- TU JS -->
+<script src="registro.js"></script>
+
+</body>
+</html>

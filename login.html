@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - Nano Connect</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+<center>
+
+    <h1 class="header">
+        Nano Connect
+        <sup><img src="m2.png"></sup>
+    </h1>
+
+    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-11 login_div">
+
+        <img src="logo.png" class="logo">
+
+        <h1>Iniciar sesión</h1>
+
+        <br>
+
+        <input type="text"
+               id="user_name"
+               class="form-control"
+               placeholder="Nombre de usuario">
+
+        <br>
+
+        <input type="password"
+               id="password"
+               class="form-control"
+               placeholder="Contraseña">
+
+        <br>
+
+        <button class="btn btn-primary" onclick="login()">
+            Entrar
+        </button>
+
+        <br><br>
+
+        <p id="mensaje"></p>
+
+        <br>
+
+        <p>¿No tienes una conexión?</p>
+
+        <a href="registro.html">
+            Crear conexión
+        </a>
+
+    </div>
+
+</center>
+
+<script src="login.js"></script>
+
+</body>
+</html>
